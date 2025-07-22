@@ -3,9 +3,9 @@ import Counter from '../ui/Counter';
 
 const StatsSection = () => {
   const stats = [
-    { number: 12, label: 'Programs Offered', suffix: '+' },
+    { number: 3, label: 'Programs Offered', suffix: '+' },
     { number: 98, label: 'Graduation Rate', suffix: '%' },
-    { number: 8, label: 'Locations Nationwide', suffix: '+' }
+    { number: 1, label: 'Locations Nationwide', suffix: '+' }
   ];
 
   return (

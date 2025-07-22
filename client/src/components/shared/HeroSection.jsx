@@ -31,14 +31,16 @@ const HeroSection = () => {
                 to="/programs"
                 variant="secondary"
                 size="lg"
+                className="rounded-md"
               >
                 Explore Programs
               </Button>
               <Button 
                 as="link" 
                 to="/volunteer"
-                variant="outline"
+                variant="custom"
                 size="lg"
+                className="rounded-md"
               >
                 Volunteer With Us
               </Button>
@@ -80,13 +82,13 @@ const HeroSection = () => {
             />
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg z-10">
               <div className="text-3xl font-bold text-[#E32845]">
-                <Counter end={500} duration={2000} />+
+                <Counter end={8} duration={2000} />+
               </div>
               <div className="text-gray-600">Students Trained</div>
             </div>
             <div className="absolute -top-6 -right-6 bg-white p-6 rounded-lg shadow-lg z-10">
               <div className="text-3xl font-bold text-[#E32845]">
-                <Counter end={25} duration={2000} />+
+                <Counter end={3} duration={2000} />+
               </div>
               <div className="text-gray-600">Volunteers</div>
             </div>

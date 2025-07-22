@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ImageSlider = ({ images, interval = 9000 }) => {
+const ImageSlider = ({ images, interval = 40000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const ImageSlider = ({ images, interval = 9000 }) => {
           key={currentIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 3 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 5 }}
           transition={{ duration: 5, ease: 'easeInOut' }}
           className="w-full h-full"
         >

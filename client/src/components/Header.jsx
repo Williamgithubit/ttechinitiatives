@@ -4,7 +4,7 @@ import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
 import logo from "../assets/TTI-Logo.png";
 
-const Header = ({ user, onLogin, onLogout }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
@@ -40,25 +40,7 @@ const Header = ({ user, onLogin, onLogout }) => {
           </nav>
           
           <div className="hidden md:block">
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center text-sm text-gray-700">
-                  <FaUserCircle className="mr-2" />
-                  <span>Welcome, {user.name}</span>
-                </div>
-                <button
-                  onClick={onLogout}
-                  className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition-colors duration-200"
-                >
-                  <div className="flex items-center justify-center">
-                    <FiLogOut className="mr-2" />
-                    Logout
-                  </div>
-                </button>
-              </div>
-            ) : (
               <button
-                onClick={onLogin}
                 className="bg-[#000054] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#000075] transition-colors duration-200"
               >
                 <div className="flex items-center justify-center">
@@ -66,7 +48,6 @@ const Header = ({ user, onLogin, onLogout }) => {
                   Login / Register
                 </div>
               </button>
-            )}
           </div>
 
           <div className="md:hidden">
@@ -95,14 +76,13 @@ const Header = ({ user, onLogin, onLogout }) => {
               </Link>
             ))}
             <div className="pt-4 pb-2">
-              {user ? (
+
                 <div className="px-3 py-2">
                   <div className="flex items-center text-sm text-gray-700 mb-2">
                     <FaUserCircle className="mr-2" />
                     <span>Welcome, {user.name}</span>
                   </div>
                   <button
-                    onClick={onLogout}
                     className="w-full bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700"
                   >
                     <div className="flex items-center justify-center">
@@ -111,7 +91,7 @@ const Header = ({ user, onLogin, onLogout }) => {
                   </div>
                   </button>
                 </div>
-              ) : (
+
                 <button
                   onClick={() => {
                     onLogin();
@@ -124,7 +104,6 @@ const Header = ({ user, onLogin, onLogout }) => {
                   Login / Register
                 </div>
                 </button>
-              )}
             </div>
           </div>
         </div>

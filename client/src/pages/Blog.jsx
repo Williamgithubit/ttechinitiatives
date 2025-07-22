@@ -107,7 +107,7 @@ const Blog = () => {
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="w-full px-6 py-4 pr-12 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#E32845]"
+                className="w-full px-6 py-4 pr-12 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#E32845] bg-white"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -261,9 +261,9 @@ const Blog = () => {
               <input 
                 type="email" 
                 placeholder="Enter your email" 
-                className="flex-1 px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#E32845]"
+                className="flex-1 px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#E32845] bg-white"
               />
-              <Button variant="secondary" className="whitespace-nowrap">
+              <Button variant="secondary" className="whitespace-nowrap rounded-full">
                 Subscribe
               </Button>
             </div>

@@ -48,11 +48,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = {
-    user,
-    loading,
-    login,
-    register,
-    logout
+    // user,
+    // loading,
+    // login,
+    // register,
+    // logout
   };
 
   return (

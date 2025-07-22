@@ -4,6 +4,8 @@ import Button from '../components/ui/Button';
 import { FaChalkboardTeacher, FaUserGraduate, FaLaptopCode, FaHandsHelping, FaNetworkWired, FaGlobeAfrica } from 'react-icons/fa';
 import { GiTeacher, GiGraduateCap, GiNetworkBars, GiOfficeChair } from 'react-icons/gi';
 import { MdOutlineEventNote, MdOutlineSocialDistance, MdBusinessCenter, MdSchool } from 'react-icons/md';
+import image1 from "../assets/group-diverse-teens-young-people-doing-activities-together-celebrating-world-youth-skills-day.jpg"
+import image2 from "../assets/father-helping-supporting-his-daughter-with-online-school-while-staying-home.jpg"
 
 const Volunteer = () => {
   const volunteerOpportunities = [
@@ -83,10 +85,16 @@ const Volunteer = () => {
               </ul>
             </div>
             <img
-              src="/src/assets/group-diverse-teens-young-people-doing-activities-together-celebrating-world-youth-skills-day.jpg"
+              src={image1}
               alt="Diverse group of young people engaged in activities together"
               className="rounded-lg shadow-lg w-full h-auto object-cover"
             />
+            <img
+  src={image2}
+  alt="Diverse group of young people engaged in activities together"
+  className="rounded-lg shadow-lg w-full h-auto object-cover mt-10 hidden lg:block"
+/>
+
           </div>
         </div>
 
