@@ -10,6 +10,7 @@ import {
   FaChartLine,
   FaCalendarAlt,
   FaUserGraduate,
+  FaMicrosoft
 } from "react-icons/fa";
 import { GiGraduateCap } from "react-icons/gi";
 
@@ -46,6 +47,16 @@ const Home = () => {
       icon: <FaMobileAlt className="text-4xl mb-4 text-[#000054]" />,
       image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
     },
+    {
+      id: 3,
+      title: "Microsoft Office Suite",
+      description:
+        "Master essential Microsoft Office tools like Word, Excel, and PowerPoint. Gain efficiency in document creation, data analysis, and presentations.",
+      duration: "10 weeks",
+      level: "Beginner",
+      icon: <FaMicrosoft className="text-4xl mb-4 text-[#000054]" />,
+      image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
+    }
   ];
 
   const testimonials = [
@@ -81,39 +92,41 @@ const Home = () => {
       <StatsSection />
 
       {/* Featured Programs */}
-      <div className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#000054] mb-4">
+      <div className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#000054] mb-3 sm:mb-4">
               Featured Programs
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
               Our comprehensive curriculum prepares students for careers in
               technology with practical, hands-on learning.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {programs.map((program) => (
               <Card
                 key={program.id}
-                className="h-full flex flex-col w-full max-w-sm"
+                className="h-full flex flex-col w-full hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="bg-gray-100 p-6 flex justify-center">
-                  {program.icon}
+                <div className="bg-gray-100 p-4 sm:p-6 flex justify-center">
+                  {React.cloneElement(program.icon, {
+                    className: `${program.icon.props.className} w-12 h-12 sm:w-14 sm:h-14`
+                  })}
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold text-[#000054] mb-3">
+                <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                  <h3 className="text-lg sm:text-xl font-semibold text-[#000054] mb-2 sm:mb-3">
                     {program.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 flex-1">
+                  <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 flex-1">
                     {program.description}
                   </p>
-                  <div className="flex justify-between items-center text-sm text-gray-600">
+                  <div className="flex justify-between items-center text-xs sm:text-sm text-gray-600 mt-auto pt-2">
                     <div className="flex items-center">
-                      <FaCalendarAlt className="mr-1 text-[#E32845]" />
+                      <FaCalendarAlt className="mr-1 sm:mr-2 text-[#E32845]" />
                       <span>{program.duration}</span>
                     </div>
-                    <span className="bg-[#E32845] text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-[#E32845] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap">
                       {program.level}
                     </span>
                   </div>
@@ -125,19 +138,23 @@ const Home = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="bg-[#f8f9fa] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#000054] mb-4">
+      <div className="bg-[#f8f9fa] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#000054] mb-3 sm:mb-4">
               Success Stories
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg text-gray-600">
               Hear from our students and volunteers
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
+              <TestimonialCard 
+                key={testimonial.name} 
+                {...testimonial} 
+                className="h-full"
+              />
             ))}
           </div>
         </div>

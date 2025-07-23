@@ -10,6 +10,7 @@ import Events from './pages/Events';
 import Volunteer from './pages/Volunteer';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import Login from './pages/Login';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,6 +36,7 @@ function App() {
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
           </Routes>
           <ScrollToTop />
         </main>

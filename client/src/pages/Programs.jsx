@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaClock, FaUserGraduate, FaChalkboardTeacher, FaLaptopCode, FaMobileAlt, FaChartLine } from 'react-icons/fa';
+import { FaClock, FaUserGraduate, FaChalkboardTeacher, FaLaptopCode, FaMobileAlt, FaChartLine, FaMicrosoft } from 'react-icons/fa';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import Card from '../components/ui/Card';
@@ -31,8 +31,8 @@ const Programs = ({ user }) => {
     },
     {
       id: 3,
-      title: "Mobile App Development",
-      description: "Create cross-platform mobile applications using Flutter and Dart, from UI design to publishing on app stores.",
+      title: "Graphic Design Essentials",
+      description: "Learn the fundamentals of graphic design, including color theory, typography, layout, and visual communication using modern tools and techniques.",
       duration: "10 weeks",
       level: "Intermediate",
       icon: <FaMobileAlt className="text-4xl  text-[#000054]" />,
@@ -41,11 +41,11 @@ const Programs = ({ user }) => {
     },
     {
       id: 4,
-      title: "Data Science Fundamentals",
-      description: "Unlock the power of data with Python, Pandas, and visualization tools to analyze and interpret complex datasets.",
+      title: "Microsoft Office Suite",
+      description: "Master essential Microsoft Office tools like Word, Excel, and PowerPoint. Gain efficiency in document creation, data analysis, and presentations.",
       duration: "14 weeks",
       level: "Advanced",
-      icon: <FaChartLine className="text-4xl  text-[#000054]" />,
+      icon: <FaMicrosoft className="text-4xl  text-[#000054]" />,
       bgColor: "bg-emerald-50",
       textColor: "text-emerald-700"
     }

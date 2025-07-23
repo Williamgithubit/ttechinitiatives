@@ -18,7 +18,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-lg fixed w-full top-0 z-50">
+    <header className="bg-gradient-to-r from-[#000054] to-[#1a1a6e] fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex-shrink-0">
@@ -31,7 +31,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-[#E32845] hover:bg-gray-50 transition-colors duration-200"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-white hover:text-[#E32845] hover:bg-gray-50 transition-colors duration-200"
                 >
                   {item.name}
                 </Link>
@@ -40,20 +40,21 @@ const Header = () => {
           </nav>
           
           <div className="hidden md:block">
-              <button
-                className="bg-[#000054] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#000075] transition-colors duration-200"
-              >
-                <div className="flex items-center justify-center">
-                  <FiLogIn className="mr-2" />
-                  Login / Register
-                </div>
-              </button>
+            <Link 
+              to="/login"
+              className="inline-block bg-[#000054] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#E32845] cursor-pointer transition-colors duration-200"
+            >
+              <div className="flex items-center justify-center">
+                <FiLogIn className="mr-2" />
+                Login
+              </div>
+            </Link>
           </div>
 
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#E32845] hover:bg-gray-50"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#E32845] bg-gray-50"
             >
               {isMenuOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
             </button>
@@ -76,34 +77,16 @@ const Header = () => {
               </Link>
             ))}
             <div className="pt-4 pb-2">
-
-                <div className="px-3 py-2">
-                  <div className="flex items-center text-sm text-gray-700 mb-2">
-                    <FaUserCircle className="mr-2" />
-                    <span>Welcome, {user.name}</span>
-                  </div>
-                  <button
-                    className="w-full bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700"
-                  >
-                    <div className="flex items-center justify-center">
-                    <FiLogOut className="mr-2" />
-                    Logout
-                  </div>
-                  </button>
-                </div>
-
-                <button
-                  onClick={() => {
-                    onLogin();
-                    setIsMenuOpen(false);
-                  }}
-                  className="w-full bg-[#000054] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
-                >
-                  <div className="flex items-center justify-center">
+              <Link 
+                to="/login"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full bg-[#000054] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#E32845] text-center"
+              >
+                <div className="flex items-center justify-center">
                   <FiLogIn className="mr-2" />
-                  Login / Register
+                  Login
                 </div>
-                </button>
+              </Link>
             </div>
           </div>
         </div>
