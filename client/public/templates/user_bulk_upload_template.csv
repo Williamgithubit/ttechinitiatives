@@ -1,0 +1,27 @@
+# User Bulk Upload Template
+# Required fields: email, name, role
+# Optional fields: phone, status
+# Role must be one of: admin, teacher, student, parent
+# Status must be either: active (default) or inactive
+
+# Example 1: Basic user
+email,name,role,phone,status
+johndoe@example.com,John Doe,student,1234567890,active
+
+# Example 2: Teacher with no phone number
+janedoe@example.com,Jane Smith,teacher,,active
+
+# Example 3: Inactive admin
+admin@example.com,Admin User,admin,9876543210,inactive
+
+# Example 4: Parent with multiple contacts
+parent1@example.com,Robert Johnson,parent,5551234567,active
+
+# Example 5: Student with minimal info
+student1@example.com,Alex Brown,student,,
+
+# Notes:
+# - All emails must be unique
+# - Names should be in 'First Last' format
+# - Phone numbers should be digits only, no special characters
+# - If status is not provided, it will default to 'active'

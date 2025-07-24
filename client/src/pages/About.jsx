@@ -114,8 +114,8 @@ const About = () => {
             </h1>
             <p className="text-lg text-gray-700 mb-6">
               <p className="mb-6">
-                Founded July 4, 2025 by a group of passionate young
-                technologists name William T. Johnson Jr, T-Tech Initiatives is
+                Founded July 4, 2025 by a  passionate young
+                technologist name William T. Johnson Jr, T-Tech Initiatives is
                 dedicated to providing free digital education to underserved
                 communities across Liberia. We believe that access to technology
                 education should not be limited by socioeconomic status.

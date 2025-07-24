@@ -1,162 +1,128 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { FaUser, FaLock, FaArrowRight } from 'react-icons/fa';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Container, Box, TextField, Button, Typography, CircularProgress } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
+import { login, selectAuthError, selectIsAuthenticated, selectUser } from "../store/Auth/authSlice";
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    userId: '',
-    password: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectUser);
+  const error = useSelector(selectAuthError);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    
-    // Basic validation
-    if (!formData.userId.trim() || !formData.password) {
-      setError('Please fill in all fields');
-      return;
+  useEffect(() => {
+    if (isAuthenticated && user?.role) {
+      const from = location.state?.from?.pathname || `/dashboard/${user.role}`;
+      console.log('Login - User authenticated, redirecting to:', from);
+      navigate(from, { replace: true });
     }
+  }, [isAuthenticated, user, navigate, location.state]);
 
-    setIsLoading(true);
-    
+  const onSubmit = async (data) => {
     try {
-      // Here you would typically make an API call to your backend
-      // For demo purposes, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // On successful login, you might want to:
-      // 1. Save the authentication token
-      // 2. Update the auth context
-      // 3. Redirect to the dashboard or home page
-      navigate('/');
-      
+      console.log('Login - Dispatching login action with:', data);
+      await dispatch(login({ email: data.email, password: data.password })).unwrap();
+      console.log('Login - Login successful');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
-      console.error('Login error:', err);
-    } finally {
-      setIsLoading(false);
+      console.error('Login - Login failed:', err);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#f0f4ff] to-[#e6e9ff] p-4">
-      <motion.div 
-        className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden"
+    <Container maxWidth="sm" sx={{ py: 4, minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <motion.div
+        className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Header */}
-        <div className="bg-gradient-to-r from-[#000054] to-[#1a1a6e] p-6 text-center">
-          <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
-          <p className="text-blue-100 mt-1">Sign in to access your account</p>
-        </div>
-        
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 sm:p-8">
-          {error && (
-            <div className="mb-6 p-3 bg-red-50 text-red-700 rounded-lg text-sm">
-              {error}
-            </div>
-          )}
-          
-          {/* User ID Field */}
-          <div className="mb-6">
-            <label htmlFor="userId" className="block text-sm font-medium text-gray-700 mb-2">
-              User ID
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaUser className="text-gray-400" />
-              </div>
-              <input
-                type="text"
-                id="userId"
-                name="userId"
-                value={formData.userId}
-                onChange={handleChange}
-                className="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#000054] focus:ring focus:ring-[#000054]/20 p-2.5 text-sm"
-                placeholder="Enter your user ID"
-                autoComplete="username"
-                required
-              />
-            </div>
-          </div>
-          
-          {/* Password Field */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <Link to="/forgot-password" className="text-xs text-[#000054] hover:text-[#E32845] transition-colors">
-                Forgot password?
-              </Link>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaLock className="text-gray-400" />
-              </div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="pl-10 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#000054] focus:ring focus:ring-[#000054]/20 p-2.5 text-sm"
-                placeholder="••••••••"
-                autoComplete="current-password"
-                required
-              />
-            </div>
-          </div>
-          
-          {/* Remember Me & Submit */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center">
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', color: '#000054' }}>
+          Welcome Back
+        </Typography>
+        <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 4 }}>
+          Sign in to access your account
+        </Typography>
+        {error && (
+          <Typography color="error" align="center" sx={{ mb: 3 }}>
+            {error}
+          </Typography>
+        )}
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: 'Invalid email address',
+              },
+            })}
+            label="Email"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <Box sx={{ mr: 1, color: 'text.secondary' }}>
+                  <LoginIcon />
+                </Box>
+              ),
+            }}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            autoComplete="email"
+          />
+          <TextField
+            {...register('password', { required: 'Password is required' })}
+            label="Password"
+            type="password"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <Box sx={{ mr: 1, color: 'text.secondary' }}>
+                  <LoginIcon />
+                </Box>
+              ),
+            }}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            autoComplete="current-password"
+          />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <input
                 id="remember-me"
-                name="remember-me"
                 type="checkbox"
                 className="h-4 w-4 text-[#000054] focus:ring-[#000054] border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+              <label htmlFor="remember-me" className="ml-2 text-sm text-gray-700">
                 Remember me
               </label>
-            </div>
-          </div>
-          
-          {/* Submit Button */}
-          <button
+            </Box>
+            <Link to="/forgot-password" className="text-sm text-[#000054] hover:text-[#E32845]">
+              Forgot password?
+            </Link>
+          </Box>
+          <Button
             type="submit"
-            disabled={isLoading}
-            className="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-[#000054] hover:bg-[#E32845] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#000054] transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+            variant="contained"
+            fullWidth
+            disabled={isSubmitting}
+            startIcon={isSubmitting ? <CircularProgress size={20} /> : <LoginIcon />}
+            sx={{ bgcolor: '#000054', ':hover': { bgcolor: '#E32845' } }}
           >
-            {isLoading ? (
-              'Signing in...'
-            ) : (
-              <>
-                Sign In
-                <FaArrowRight className="ml-2" />
-              </>
-            )}
-          </button>
-        </form>
+            {isSubmitting ? 'Signing in...' : 'Sign In'}
+          </Button>
+        </Box>
       </motion.div>
-    </div>
+    </Container>
   );
 };
 

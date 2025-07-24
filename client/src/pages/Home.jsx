@@ -48,14 +48,14 @@ const Home = () => {
       image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
     },
     {
-      id: 3,
+      id: 4,
       title: "Microsoft Office Suite",
       description:
         "Master essential Microsoft Office tools like Word, Excel, and PowerPoint. Gain efficiency in document creation, data analysis, and presentations.",
       duration: "10 weeks",
       level: "Beginner",
       icon: <FaMicrosoft className="text-4xl mb-4 text-[#000054]" />,
-      image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
+      image: " https://placehold.co/300x200/06b6d4/ffffff?text=Office+Suite",
     }
   ];
 
