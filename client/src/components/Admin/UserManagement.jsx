@@ -247,9 +247,11 @@ const UserManagement = () => {
             </Grid>
             <Grid xs={12} md={3} sx={{ display: 'flex', alignItems: 'center' }}>
               <Tooltip title="Refresh">
-                <IconButton onClick={handleRefresh} disabled={loading}>
-                  <RefreshIcon />
-                </IconButton>
+                <span>
+                  <IconButton onClick={handleRefresh} disabled={loading}>
+                    <RefreshIcon />
+                  </IconButton>
+                </span>
               </Tooltip>
             </Grid>
           </Grid>
@@ -316,17 +318,19 @@ const UserManagement = () => {
                             <IconButton size="small" color="primary" onClick={() => handleEditUser(user)}>
                               <EditIcon fontSize="small" />
                             </IconButton>
-                            <Tooltip title="Delete User">
-                              <IconButton 
-                                color="error" 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleDeleteClick(user);
-                                }}
-                                disabled={user.role === 'admin'}
-                              >
-                                <DeleteIcon />
-                              </IconButton>
+                            <Tooltip title={user.role === 'admin' ? 'Cannot delete admin users' : 'Delete User'}>
+                              <span>
+                                <IconButton 
+                                  color="error" 
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteClick(user);
+                                  }}
+                                  disabled={user.role === 'admin'}
+                                >
+                                  <DeleteIcon />
+                                </IconButton>
+                              </span>
                             </Tooltip>
                           </TableCell>
                         </TableRow>

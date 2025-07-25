@@ -8,7 +8,12 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
     tailwindcss(),
     process.env.ANALYZE && visualizer({
       open: true,
@@ -43,6 +48,9 @@ export default defineConfig({
     port: 3000
   },
   build: {
+    target: 'es2020',
+    minify: 'terser',
+    sourcemap: false,
     chunkSizeWarningLimit: 1000, // Increase chunk size warning limit (in kBs)
     rollupOptions: {
       output: {

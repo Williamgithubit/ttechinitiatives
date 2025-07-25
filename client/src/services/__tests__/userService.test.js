@@ -1,4 +1,4 @@
-import { vi, describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { vi, describe, it, expect, beforeAll, afterEach } from 'vitest';
 import { 
   getUserRole, 
   updateUserRole, 
@@ -7,6 +7,12 @@ import {
 } from '../userService';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+
+// Mock Firebase Firestore
+vi.mock('firebase/firestore');
+vi.mock('../firebase', () => ({
+  db: {}
+}));
 
 // Mock Firebase Firestore
 vi.mock('firebase/firestore', () => ({
