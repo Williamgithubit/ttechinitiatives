@@ -1,0 +1,12 @@
+{
+  "name": "t-tech-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "create-admin": "node scripts/createAdminUser.js"
+  },
+  "dependencies": {
+    "env": "^0.0.2",
+    "firebase-admin": "^12.2.0"
+  }
+}
