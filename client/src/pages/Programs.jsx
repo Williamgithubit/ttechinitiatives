@@ -4,6 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import { BsMicrosoft } from 'react-icons/bs';
 
 const Programs = ({ user }) => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
@@ -31,8 +32,8 @@ const Programs = ({ user }) => {
     },
     {
       id: 3,
-      title: "Mobile App Development",
-      description: "Create cross-platform mobile applications using Flutter and Dart, from UI design to publishing on app stores.",
+      title: "Graphic Design Essentials",
+      description: "Learn the fundamentals of graphic design, including color theory, typography, layout, and visual communication using modern tools and techniques.",
       duration: "10 weeks",
       level: "Intermediate",
       icon: <FaMobileAlt className="text-4xl  text-[#000054]" />,
@@ -41,11 +42,11 @@ const Programs = ({ user }) => {
     },
     {
       id: 4,
-      title: "Data Science Fundamentals",
-      description: "Unlock the power of data with Python, Pandas, and visualization tools to analyze and interpret complex datasets.",
-      duration: "14 weeks",
-      level: "Advanced",
-      icon: <FaChartLine className="text-4xl  text-[#000054]" />,
+      title: "Microsoft Office Suite",
+      description: "Master essential Microsoft Office tools like Word, Excel, and PowerPoint. Gain efficiency in document creation, data analysis, and presentations.",
+      duration: "10 weeks",
+      level: "Beginner",
+      icon: <BsMicrosoft className="text-4xl  text-[#000054]" />,
       bgColor: "bg-emerald-50",
       textColor: "text-emerald-700"
     }

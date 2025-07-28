@@ -12,6 +12,7 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 import { GiGraduateCap } from "react-icons/gi";
+import { BsMicrosoft } from "react-icons/bs";
 
 const Home = () => {
   const programs = [
@@ -44,6 +45,16 @@ const Home = () => {
       duration: "10 weeks",
       level: "Intermediate",
       icon: <FaMobileAlt className="text-4xl mb-4 text-[#000054]" />,
+      image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
+    },
+    {
+      id: 4,
+      title: "Microsoft Office SuiteGraphic Design Essentials",
+      description:
+        "Master essential Microsoft Office tools like Word, Excel, and PowerPoint. Gain efficiency in document creation, data analysis, and presentations.",
+      duration: "10 weeks",
+      level: "Beginner",
+      icon: <BsMicrosoft className="text-4xl mb-4 text-[#000054]" />,
       image: " https://placehold.co/300x200/06b6d4/ffffff?text=Mobile+Apps",
     },
   ];
@@ -92,7 +103,7 @@ const Home = () => {
               technology with practical, hands-on learning.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto max-w-6xl">
             {programs.map((program) => (
               <Card
                 key={program.id}
