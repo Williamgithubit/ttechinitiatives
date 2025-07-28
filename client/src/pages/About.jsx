@@ -360,7 +360,7 @@ const About = () => {
               </p>
               <a
                 href="/volunteer"
-                className="inline-block bg-[#000054] hover:bg-[#E32845] text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"
+                className="inline-block bg-[#000054] hover:bg-[#1e1e8f] text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"
               >
                 Join Our Team
               </a>

@@ -17,7 +17,7 @@ const Button = ({
   const baseClasses = 'font-medium transition-colors duration-200 focus:outline-none inline-flex items-center justify-center';
   
   const variants = {
-    primary: 'bg-[#000054] text-white hover:bg-[#E32845]',
+    primary: 'bg-[#000054] text-white hover:bg-[#1a1a6e]',
     secondary: 'bg-[#E32845] text-white hover:bg-[#c41e38]',
     outline: 'bg-transparent text-[#000054] hover:bg-gray-50 border border-[#000054]',
     danger: 'bg-red-600 text-white hover:bg-red-700',
