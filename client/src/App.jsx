@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
@@ -6,7 +6,6 @@ import { CssBaseline } from '@mui/material';
 import { store } from './store/store';
 import { initializeAuth, selectIsAuthenticated } from './store/Auth/authSlice';
 import theme from './theme';
-import NavBar from './components/shared/NavBar';
 import ScrollToTop from './components/ui/ScrollToTop';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -16,6 +15,7 @@ import Events from './pages/Events';
 import Volunteer from './pages/Volunteer';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import Header from './components/Header';
 import Login from './pages/Login';
 
 function App() {
@@ -30,9 +30,14 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <div className="min-h-screen flex flex-col">
-        <Header user={user} onLogin={handleLogin} onLogout={handleLogout} />
+       <Header user={user} onLogin={handleLogin} onLogout={handleLogout} />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -42,7 +47,7 @@ function App() {
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           <ScrollToTop />
         </main>
